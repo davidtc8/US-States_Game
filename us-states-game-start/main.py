@@ -24,6 +24,9 @@ correct_states = []
 # read the csv file
 df = pandas.read_csv ('50_states.csv')
 
+# convert all the states to a list
+all_states = df.state.to_list()
+
 while game_is_on:
     # check the correct guess
     message = f'Correct States {correct_guesses}/50'
@@ -49,6 +52,15 @@ while game_is_on:
         word.write(guess, font=style, align='center')
         print('elements inside the list: ', correct_states)
         print(correct_guesses)
+    elif guess == 'Exit':
+        # Creating a new csv file for the ones that we didn't manage to answer correctly
+        missing_states = []
+        for state in all_states:
+            if state not in correct_states:
+                missing_states.append(state)
+        new_data = pandas.DataFrame(missing_states)
+        new_data.to_csv('states_to_learn.csv')
+        game_is_on = False
     else:
         word_2 = turtle.Turtle()
         word_2.hideturtle()
@@ -58,6 +70,9 @@ while game_is_on:
         word_2.write(f'{guess} is not a state', font=style, align='center')
         time.sleep(2)
         word_2.clear()
+
+# Save the missing states to a .csv file
+
 
 # get the coordinates in the map
 # this can help you create another map from another country if you like
