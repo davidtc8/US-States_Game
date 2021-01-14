@@ -6,5 +6,5 @@ Guess as many states from the US as you can 🤓!
 - Pandas
 - User Interface
 
-## Example of the code:
+## Example of the code 🎬:
 ![image](image.gif)
