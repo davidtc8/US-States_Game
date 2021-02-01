@@ -5,6 +5,7 @@ Guess as many states from the US as you can 🤓!
 - Data Manipulation 
 - Pandas
 - User Interface
+- Lists comprehensions
 
 ## Example of the code 🎬:
 ![image](image.gif)
