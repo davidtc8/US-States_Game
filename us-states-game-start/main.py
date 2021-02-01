@@ -22,7 +22,7 @@ correct_guesses = 0
 correct_states = []
 
 # read the csv file
-df = pandas.read_csv ('50_states.csv')
+df = pandas.read_csv('50_states.csv')
 
 # convert all the states to a list
 all_states = df.state.to_list()
@@ -32,7 +32,7 @@ while game_is_on:
     message = f'Correct States {correct_guesses}/50'
 
     # check the answer
-    answer_state = screen.textinput (title=message, prompt='Guess a State').title()
+    answer_state = screen.textinput(title=message, prompt='Guess a State').title()
     guess = answer_state
     print(guess)
 
@@ -54,10 +54,12 @@ while game_is_on:
         print(correct_guesses)
     elif guess == 'Exit':
         # Creating a new csv file for the ones that we didn't manage to answer correctly
-        missing_states = []
-        for state in all_states:
-            if state not in correct_states:
-                missing_states.append(state)
+        #missing_states = []
+        # applying lists comprehensions!
+        missing_states = [state for state in all_states if state not in correct_states]
+        #for state in all_states:
+            #if state not in correct_states:
+                #missing_states.append(state)
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv('states_to_learn.csv')
         game_is_on = False
@@ -77,7 +79,7 @@ while game_is_on:
 # get the coordinates in the map
 # this can help you create another map from another country if you like
 # def get_mouse_click_coor(x,y)
-    #print(x,y)
+# print(x,y)
 
-#turtle.onscreenclick(get_mouse_click_coor)
-#turtle.mainloop()
+# turtle.onscreenclick(get_mouse_click_coor)
+# turtle.mainloop()
